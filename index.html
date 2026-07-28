@@ -1103,22 +1103,21 @@ function petalBurstSmall(point){
     const audioWrap = document.createElement('div');
     audioWrap.className = 'pl-audio-wrap';
 
-    if(useSpotify){
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://open.spotify.com/track/6v5RJuJ9yhvaXkMXMeMZBw?si=ff4431f7a5544d16`;
-      iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-      iframe.loading = 'lazy';
-      audioWrap.appendChild(iframe);
-    } else {
-      audio = document.createElement('audio');
-      audio.preload = 'none';
-      audio.controls = true;
-      const source = document.createElement('source');
-      source.src = song.src;
-      source.type = 'audio/mpeg';
-      audio.appendChild(source);
-      audioWrap.appendChild(audio);
-    }
+    const iframe = document.createElement("iframe");
+
+iframe.src = `https://open.spotify.com/embed/track/${song.spotifyId}?utm_source=generator`;
+
+iframe.width = "100%";
+iframe.height = "152";
+iframe.frameBorder = "0";
+
+iframe.allow =
+"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+
+iframe.loading = "lazy";
+
+audioWrap.appendChild(iframe);
+
 
     item.innerHTML = `
       <div class="pl-index">${String(i+1).padStart(2,'0')}</div>
